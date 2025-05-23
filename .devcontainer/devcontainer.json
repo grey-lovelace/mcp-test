@@ -1,0 +1,54 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Python 3",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+	"features": {
+		"ghcr.io/devcontainers-extra/features/poetry:2": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers/features/aws-cli:1": {}
+	},
+	"containerEnv": {
+		"POETRY_VIRTUALENVS_IN_PROJECT": "1",
+		"POETRY_VIRTUALENVS_CREATE": "1"
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.inheritEnv": true,
+				"terminal.integrated.scrollback": 10000,
+				"python.analysis.typeCheckingMode": "standard",
+				"python.testing.pytestEnabled": true,
+				"python.defaultInterpreterPath": "./.venv/bin/python",
+				"python.envFile": ""
+			},
+			"extensions": [
+				"ms-vscode.makefile-tools",
+				"ms-vsliveshare.vsliveshare",
+				"ms-python.python",
+				"ms-python.black-formatter",
+				"ms-python.vscode-pylance",
+				"ms-python.isort",
+				"github.vscode-github-actions",
+				"redhat.vscode-yaml",
+				"tamasfe.even-better-toml"
+			]
+		}
+	},
+	"mounts": [
+	    "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind"
+	]
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
